@@ -6,4 +6,5 @@
          (my-sum (cdr l))))))
 
 ; test it with a random list
-(my-sum '(2 4 6))
+(display (my-sum '(2 4 6 8)))
+(newline)
