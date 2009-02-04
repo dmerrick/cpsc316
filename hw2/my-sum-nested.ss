@@ -9,4 +9,5 @@
          (my-sum (cdr l))))))
 
 ; test it with a random nested list
-(my-sum '((1 3 5) (7) 9))
+(display (my-sum '((1 3 5) (7) 9)))
+(newline)
