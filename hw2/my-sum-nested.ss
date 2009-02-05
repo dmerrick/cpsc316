@@ -8,6 +8,13 @@
            (car l))
          (my-sum (cdr l))))))
 
-; test it with a random nested list
 (display (my-sum '((1 3 5) (7) 9)))
+(newline)
+(display (my-sum '(1 (2 (3 (4 5))))))
+(newline)
+(display (my-sum '(10 20 (30) (40 50))))
+(newline)
+(display (my-sum '((((((100))))) 1)))
+(newline)
+(display (my-sum '((2 4) (4 3 (7 (6))))))
 (newline)
