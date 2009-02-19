@@ -1,0 +1,79 @@
+Homework 4
+Dana Merrick - CPSC316
+Concepts in Programming Languages
+
+3.3a) The error? function would be impossible since the E expression
+parameter would nonetheless be evaluated before it was passed to the
+function.
+
+3.3b) It would be difficult to implement the guarded function because
+there are a number of ways that the expression could go wrong. I imagine
+the best way to go about it would be to start by running (quote E) and
+then parsing E as a list, looking for errors (like dividing by zero)
+and eventually returning the value of E if everything went smoothly. If
+there was an error found, the return value of zero would have to be
+returned without ever executing E (as that would cause an error).`
+
+4.13a) This is arguable. Imperative languages are easier to implement
+and are often easier to program in, but that does not mean they are
+superior. It's true, however, that the vast libraries of functions
+to perform tasks can be a huge asset to imperative languages, and for
+that reason I imagine imperative languages would be more benefitial for
+most tasks.
+
+4.13b) Imperative is easier to implement, since they are able to have
+better control over their memory footprint. Also, since functional
+languages rely on recursion (and often interpreters), they demand more
+rigorous involvement by the system.
+
+4.13c) Imperative binaries would be bigger, since they rely less on
+recursion. Recursion allows complicated tasks to be performed in few
+lines of code.
+
+4.13d) In the early days of computing, memory and disk space was
+expensive, so languages with fine grained control over memory space
+would have been of primary concern. For this reason, imperative languages
+were popular, but functional languages like Lisp existed and were still
+popular.
+
+4.13e) Since memory and disk space has become so inexpensive today,
+these concerns are not as valid. There are still situations where an
+imperative language would be better suited for a task, but functional
+languages are leaving academia and becoming respected and viable options
+for everyday coding.
+
+5.1)
+
+real procedure Q(n);
+  integer n; begin
+    Q := n+1
+  end;
+
+Calling this function in the code listed in the book would be statically
+type correct, since Algol 60 did not check the parameter types of a
+proc when sent as a function argument. When executed, an error will be
+raised when true is passed to Q, because it is not possible to increment
+a Boolean value.
+
+5.2) When P(A[i]) is called, the first line of the P procedure will end up
+being interpreted as this: i := A[i]; Where the right i=1. This will set
+i to a new value of 2, and then the second line will be interpreted as
+this: A[i] := i; Where the left and right values equal 2. Then, later,
+when the print statement is called, i will be printed as 2, A[1] will
+be unchanged at 2, and A[2] will have its new value of 2 (even though
+it wasn't passed as an argument).
+
+5.3a) fun f(x,y) = if y=0 then x else if x=0 then y else x+y;
+
+5.3b) Yes, the function definition would look like this: fun eq(x,y) =
+if x=y then true else false;
+
+5.3c) In the function signature, define each parameter separately,
+and then in the function body, test equality (or whatever you need)
+for each parameter that should be repeated. The function eq would look
+like it does in 5.3b.
+
+5.3d) I imagine they restricted repeated variables because they did not
+define a test for equality on function types.
+
+
