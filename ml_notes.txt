@@ -1,0 +1,74 @@
+Data type declarations
+General syntax
+
+datatype <name> = <clause> | ... | <clause>
+
+where <clause> ::= <constr> | <constr> of <type>
+
+
+Example: an enumerated datatype
+
+- datatype color = Red | Green | Blue;
+                    ^      ^      ^
+                       <constr>s
+
+Example: tagged union
+
+Student
+ - name : string
+ - class : int
+Staff
+ - name: string
+ - title: string
+ - department : string
+
+- datatype member = Student of string * int
+                  | Staff of string * string * string;
+
+Elements are Student("Dana Merrick", 2010)
+Staff("Jimmy Jones", "President", "President's Office")
+
+In effectm member ~= union{ string*int, string*string*string }
+
+A function to return the name:
+
+- fun name(Student(n,y)) = n
+  | name(Staff(n,t,d)) = n;
+> val name = fn: member -> string;
+- name(Student("Dana Merrick",2010));
+> val it = "Dana Merrick" : string
+
+Example: A recursive datatype
+
+A tree is either:
+i) a leaf with an integer label
+ii) an internal node with an integer label and left and right subtrees
+
+- datatype tree = Leaf of int
+                | Node of int*tree*tree;
+
+1(2 3(4 5))
+Node(1, Leaf(2), Node(3, Leaf(4), Leaf(5)))
+
+A function to sum all integer labels in a tree
+
+- fun sum(Leaf(n)) = n
+    | sum(Node(n,l,r)) = n+sum(l)+sum(r);
+
+Example: A datatype with type variables
+
+Consider the datatype consisting of:
+Pair(a1,b1), Pair(a2,b2),...
+Single(a1), Single(a2),...
+Where ai's are of the same type and bj's are of the same type.
+
+- datatype ('a,'b) element = Pair of 'a*'b
+                   | Single of 'a;
+
+- datatype ('a) atree = Leaf of 'a
+                | Node of 'a*atree*atree;
+
+- fun first(Pair(a,b)) = a
+    | first(Single(a)) = a
+> val first = fn : element -> 'a
+
