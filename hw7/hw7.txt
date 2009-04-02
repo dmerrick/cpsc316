@@ -1,0 +1,34 @@
+Homework 7
+Dana Merrick - CPSC316
+Concepts in Programming Languages
+
+7.6)
+val x = ref 0;
+fun p(y' : int ref) = (
+  val memory_location = y'
+  val rvalue = !y'
+
+  y' = 1
+  x = 0
+
+  memory_location = !y'
+);
+p(x);
+
+7.7a) The procedure pass() is given the values 1 and 1. x is set to 1+1=2, y is set to 2+1=3, then x is set to 3. i, whose value was set outside of the prodecure, is set to 1+1=2. When we leave the prodecure, i is printed as 1.
+
+b) The same process that happens for part (a) will occur, but since the references to i's location in memory were passed, i can actually be modified inside the function. In the end, i will be printed as 2.
+
+c) The values 1 and 1 are passed to the function. x is set to 1+1=2, y is set to 2+1=3, then x is set to 3. i is set to 1+1=2. Upon returning from the function, the values of x and y (which were alaises for i) are filled in for i outside the function. When i is printed, 3 is displayed.
+
+7.8a) In static scope, a global identifier refers to the identifier with that name that is declared in the closest enclosing scope.
+Line 2: x=2, from line 1
+Line 4: x=7, from line 3
+Line 5: x=7, again from line 3
+x+f(x) = 7 + f(7) = 7 + (7 + 2) = 16
+
+b) In dynamic scope, a global identifier refers to the identifier associated with the most recent activation record.
+Line 2: x=2, from line 1
+Line 4: x=7, frome line 3
+Line 5: x=7, again frome line 3
+x+f(x) = 7 + f(7) = 7 + (7 + 7) = 21
